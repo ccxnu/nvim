@@ -2,6 +2,7 @@ return {
   -- MASON
   {
     'williamboman/mason.nvim',
+    ft = { 'lua', 'astro' },
     config = function()
       require('mason').setup()
     end,

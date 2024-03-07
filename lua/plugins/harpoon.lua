@@ -1,28 +1,18 @@
 return {
   'ThePrimeagen/harpoon',
-  dependencies = {
-    { 'nvim-lua/plenary.nvim', lazy = true },
-  },
   event = 'VeryLazy',
-
+  dependencies = { 'nvim-lua/plenary.nvim', lazy = true },
+  -- stylua: ignore
+  keys = {
+    { '<leader>a', function() require('harpoon.mark').add_file() end, desc = 'Harpoon mark file', },
+    { '<leader>o', function() require('harpoon.ui').toggle_quick_menu() end, desc = 'Harpoon menu', },
+    { '<leader>1', function() require('harpoon.ui').nav_file(1) end, desc = 'Harpoon to file 1', },
+    { '<leader>2', function() require('harpoon.ui').nav_file(2) end, desc = 'Harpoon to file 2', },
+    { '<leader>3', function() require('harpoon.ui').nav_file(3) end, desc = 'Harpoon to file 3', },
+    { '<leader>4', function() require('harpoon.ui').nav_file(4) end, desc = 'Harpoon to file 4', },
+    { '<leader>5', function() require('harpoon.ui').nav_file(5) end, desc = 'Harpoon to file 5', },
+  },
   config = function()
-    local mark = require('harpoon.mark')
-    local ui = require('harpoon.ui')
-
-    vim.keymap.set('n', '<leader>a', mark.add_file, { desc = 'Mark File' })
-    vim.keymap.set('n', '<leader>o', ui.toggle_quick_menu, { desc = 'Menu' })
-
-    vim.keymap.set('n', '<leader>h1', function()
-      ui.nav_file(1)
-    end, { desc = 'Move to mark 1' })
-    vim.keymap.set('n', '<leader>h2', function()
-      ui.nav_file(2)
-    end, { desc = 'Move to mark 2' })
-    vim.keymap.set('n', '<leader>h3', function()
-      ui.nav_file(3)
-    end, { desc = 'Move to mark 3' })
-    vim.keymap.set('n', '<leader>h4', function()
-      ui.nav_file(4)
-    end, { desc = 'Move to mark 4' })
+    require('harpoon').setup()
   end,
 }

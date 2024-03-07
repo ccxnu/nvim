@@ -32,6 +32,7 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
     'TelescopePrompt',
     'checkhealth',
     'dap-repl',
+    'FzfLua',
     'help',
     'lspinfo',
     'man',

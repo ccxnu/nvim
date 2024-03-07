@@ -5,9 +5,11 @@ return { -- Highlight, edit, and navigate code
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup({
-        -- Autoinstall languages that are not installed
-        auto_install = true,
-        highlight = { enable = true },
+        auto_install = true, -- Autoinstall languages that are not installed
+        highlight = {
+          enable = true, -- false will disable the whole extension
+          disable = { 'c' }, -- list of language that will be disabled
+        },
         indent = { enable = true },
       })
     end,

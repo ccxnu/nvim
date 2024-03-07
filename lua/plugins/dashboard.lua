@@ -1,7 +1,7 @@
 return {
   'nvimdev/dashboard-nvim',
   event = 'VimEnter',
-  config = function()
+  init = function()
     local logo = [[
         |\      _,,,---,,_
     ZZZzz /,`.-'`'    -.  ;-;;,_
@@ -16,9 +16,9 @@ return {
       config = {
         header = vim.split(logo, '\n'),
         center = {
-          { action = 'Telescope find_files', desc = ' Find file', icon = ' ', key = 'f' },
-          { action = 'Telescope live_grep', desc = ' Find text', icon = ' ', key = 'g' },
-          { action = 'Telescope oldfiles', desc = ' Recent files', icon = ' ', key = 'r' },
+          { action = 'FzfLua files', desc = ' Find file', icon = ' ', key = 'f' },
+          { action = 'FzfLua live_grep', desc = ' Find text', icon = ' ', key = 'g' },
+          { action = 'FzfLua oldfiles', desc = ' Recent files', icon = ' ', key = 'r' },
           { action = 'Lazy', desc = ' Lazy', icon = '󰒲 ', key = 'l' },
           { action = 'qa', desc = ' Quit', icon = ' ', key = 'q' },
         },
