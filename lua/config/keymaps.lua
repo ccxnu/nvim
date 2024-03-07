@@ -10,12 +10,10 @@ local opts = { noremap = true, silent = true }
 -----------------------------------------------------------
 --- Keymaps
 -----------------------------------------------------------
--- better indenting
+-- Better indenting
 map('v', '<', '<gv')
 map('v', '>', '>gv')
--- Disable macro key (for now)
-map('', 'q', '<nop>')
-map('n', '<Leader>l', ':Lazy')
+map('n', '<leader>l', ':Lazy<CR>', opts)
 
 -- Increment|drecement
 map('n', '+', '<C-a>')

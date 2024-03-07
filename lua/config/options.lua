@@ -17,6 +17,7 @@ opt.relativenumber = true
 opt.termguicolors = true
 opt.clipboard = 'unnamedplus' -- Sync with system clipboard
 opt.mouse = '' -- Disable mouse mode
+opt.cursorline = true -- Enable highlighting of the current line
 
 -- General settings
 opt.conceallevel = 0 -- Nothing in hidden

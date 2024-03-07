@@ -34,7 +34,7 @@ require('lazy').setup({
       'gzip',
       'matchit',
       'matchparen',
-   --   "netrwPlugin",
+      'netrwPlugin',
       'tarPlugin',
       'tohtml',
       'tutor',
@@ -43,4 +43,4 @@ require('lazy').setup({
   },
 })
 
-vim.cmd.colorscheme('rose-pine')
+vim.cmd.colorscheme('rosebones')

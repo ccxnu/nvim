@@ -49,8 +49,8 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 })
 
 -- TeX
-autocmd({ "BufRead", "BufNewFile" }, {
-  command = "setlocal filetype=tex",
-  group = augroup("tex"),
-  pattern = { "*.tex", "*.bbl", "*.bib", "*.texx", "*.texb", "*.cls" },
+autocmd({ 'BufRead', 'BufNewFile' }, {
+  command = 'setlocal filetype=tex',
+  group = augroup('tex'),
+  pattern = { '*.tex', '*.bbl', '*.bib', '*.texx', '*.texb', '*.cls' },
 })
