@@ -26,8 +26,8 @@ return {
     },
     opts = {
       window = {
-        backdrop = 0.95, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
-        width = 120, -- width of the Zen window
+        backdrop = 0.90, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+        width = 100, -- width of the Zen window
         height = 1, -- height of the Zen window
       },
     },
@@ -76,4 +76,21 @@ return {
       vim.g.vimtex_view_sioyek_options = '--new-window'
     end,
   },
+
+  {
+    "vhyrro/luarocks.nvim",
+    config = function()
+      require("luarocks").setup({})
+    end,
+  },
+
+  {
+    "rest-nvim/rest.nvim",
+    ft = "http",
+    keys = { { "<leader>r", "<Plug>RestNvim" }, },
+    dependencies = { "luarocks.nvim" },
+    config = function()
+      require("rest-nvim").setup()
+    end,
+  }
 }

@@ -1,6 +1,5 @@
 return {
   'brenoprata10/nvim-highlight-colors',
-  ft = { 'css', 'astro' },
   opts = {
     render = 'background', -- or 'foreground'
     enable_named_colors = false,
