@@ -18,6 +18,11 @@ opt.termguicolors = true
 opt.clipboard = 'unnamedplus' -- Sync with system clipboard
 opt.mouse = '' -- Disable mouse mode
 opt.cursorline = true -- Enable highlighting of the current line
+vim.opt.colorcolumn = '80'
+
+-- Spell settings
+opt.spelllang = { "en", "es" }
+opt.spell = true
 
 -- General settings
 opt.conceallevel = 0 -- Nothing in hidden

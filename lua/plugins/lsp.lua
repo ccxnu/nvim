@@ -2,7 +2,6 @@ return {
   -- MASON
   {
     'williamboman/mason.nvim',
-    ft = { 'lua', 'astro', 'go' },
     config = function()
       require('mason').setup()
     end,
@@ -11,7 +10,6 @@ return {
   -- LSP
   {
     'neovim/nvim-lspconfig',
-    ft = { 'rust', 'lua', 'go', 'python', 'astro' },
     -- event = 'VeryLazy',
     config = function()
       local lspconfig = require('lspconfig')
@@ -79,6 +77,22 @@ return {
 
       -- ### Astro ###
       lspconfig.astro.setup({})
+
+      -- ### Eslint ###
+      lspconfig.eslint.setup({})
+
+      -- ### Tailwind ###
+      lspconfig.tailwindcss.setup({
+        root_dir = function(...)
+          return require('lspconfig.util').root_pattern('tailwind.config.mjs')(...)
+        end,
+      })
+
+      -- ### Latex/Tex ###
+      lspconfig.texlab.setup({})
+
+      -- ### TServer ###
+      lspconfig.tsserver.setup({})
     end,
   },
 }

@@ -18,6 +18,14 @@ autocmd('TextYankPost', {
 --- Don't auto commenting new lines
 autocmd('BufEnter', { command = [[set formatoptions-=cro]] })
 
+--- Don't auto commenting new lines
+-- autocmd("BufWritePre", {
+--   pattern = "*",
+--   callback = function(args)
+--       require("conform").format({ bufnr = args.buf })
+--   end,
+-- })
+
 -- WhiteSpace
 autocmd('BufWritePre', {
   command = [[%s/\s\+$//e]],

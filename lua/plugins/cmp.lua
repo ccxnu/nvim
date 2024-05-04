@@ -1,5 +1,4 @@
-return {}
---[[ return {
+return {
   'hrsh7th/nvim-cmp',
   event = 'VeryLazy',
   dependencies = {
@@ -10,11 +9,23 @@ return {}
     'L3MON4D3/LuaSnip',
     'rafamadriz/friendly-snippets',
     'saadparwaiz1/cmp_luasnip',
-     'hrsh7th/cmp-emoji',
+    'hrsh7th/cmp-emoji',
   },
   config = function()
     -- local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
     local cmp = require('cmp')
+    vim.g.cmp_toggle = false
+
+    vim.keymap.set('n', '<Leader>co', function()
+      vim.g.cmp_toggle = not vim.g.cmp_toggle
+      local status
+      if vim.g.cmp_toggle then
+        status = 'ENABLED'
+      else
+        status = 'DISABLED'
+      end
+      print('Completion', status)
+    end)
 
     -- load in some snippets
     require('luasnip.loaders.from_vscode').lazy_load()
@@ -72,9 +83,12 @@ return {}
         ['<CR>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
       }),
       window = {
-           completion = cmp.config.window.bordered(),
-           documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
       },
+      enabled = function()
+        return vim.g.cmp_toggle
+      end,
       snippet = {
         expand = function(args)
           require('luasnip').lsp_expand(args.body)
@@ -82,4 +96,4 @@ return {}
       },
     })
   end,
-} --]]
+}

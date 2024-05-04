@@ -34,17 +34,6 @@ return {
   },
 
   {
-    'iamcco/markdown-preview.nvim',
-    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
-    ft = { 'markdown' },
-    build = function()
-      vim.fn['mkdp#util#install']()
-    end,
-    config = function()
-      vim.g.mkdp_theme = 'light'
-    end,
-  },
-  {
     'barrett-ruth/live-server.nvim',
     build = 'npm add -g live-server',
     cmd = { 'LiveServerStart', 'LiveServerStop' },
@@ -71,26 +60,27 @@ return {
         'specifier changed to',
         'Token not allowed in a PDF string',
       }
-
-      vim.g.vimtex_view_method = 'sioyek'
-      vim.g.vimtex_view_sioyek_options = '--new-window'
+      vim.g.vimtex_view_general_viewer = 'zathura'
+      vim.g.vimtex_view_method = 'zathura'
+      vim.g.vimtex_quickfix_mode = 0
     end,
   },
 
   {
-    "vhyrro/luarocks.nvim",
-    config = function()
-      require("luarocks").setup({})
-    end,
+    'vhyrro/luarocks.nvim',
+    lazy = true,
+    opts = {
+      rocks = { 'lua-curl', 'nvim-nio', 'mimetypes', 'xml2lua' }, -- Specify LuaRocks packages to install
+    },
   },
 
   {
-    "rest-nvim/rest.nvim",
-    ft = "http",
-    keys = { { "<leader>r", "<Plug>RestNvim" }, },
-    dependencies = { "luarocks.nvim" },
+    'rest-nvim/rest.nvim',
+    ft = 'http',
+    keys = { { '<leader>ra', '<cmd>Rest run<cr>' } },
+    dependencies = { 'luarocks.nvim' },
     config = function()
-      require("rest-nvim").setup()
+      require('rest-nvim').setup()
     end,
-  }
+  },
 }

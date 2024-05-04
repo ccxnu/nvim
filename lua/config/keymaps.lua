@@ -1,19 +1,28 @@
 ----------------------------------------------------------
 --- Variables
 -----------------------------------------------------------
-local discipline = require('me.discipline')
-discipline.cowboy()
-
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
+
+local discipline = require('me.discipline')
+discipline.cowboy()
 
 -----------------------------------------------------------
 --- Keymaps
 -----------------------------------------------------------
+-- better up/down
+map({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ 'n', 'x' }, '<Down>', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map({ 'n', 'x' }, '<Up>', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
 -- Better indenting
 map('v', '<', '<gv')
 map('v', '>', '>gv')
+
 map('n', '<leader>l', ':Lazy<CR>', opts)
+map('n', '<leader>np', ':NoNeckPain<CR>', opts)
+map('n', '<leader>e', '<CMD>Oil<CR>', { desc = 'Open Filesystem' }) -- Oil
 
 -- Increment|drecement
 map('n', '+', '<C-a>')
@@ -32,6 +41,7 @@ map('n', 'N', 'Nzzzv')
 
 -- New pane on vertical and close
 map('n', '<leader>\\', ':vsplit<CR>', opts)
+map('n', '<leader>-', ':split<CR>', opts)
 map('n', '<leader>d', ':close<CR>', opts)
 
 -- Resize window
