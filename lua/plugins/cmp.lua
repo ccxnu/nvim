@@ -1,6 +1,6 @@
 return {
   'hrsh7th/nvim-cmp',
-  event = 'VeryLazy',
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-nvim-lua',

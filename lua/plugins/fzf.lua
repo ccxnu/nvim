@@ -16,6 +16,8 @@ return {
 
   config = function()
     -- calling `setup` is optional for customization
-    require('fzf-lua').setup({})
+    require('fzf-lua').setup({
+      live_grep = { cmd = 'rg -E node_modules' },
+    })
   end,
 }

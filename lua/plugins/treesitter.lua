@@ -5,7 +5,7 @@ return { -- Highlight, edit, and navigate code
     build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup({
-        ensure_installed = { 'lua', 'xml', 'http', 'json', 'graphql' },
+        ensure_installed = { 'lua', 'xml', 'http', 'json' },
         auto_install = true, -- Autoinstall languages that are not installed
         highlight = {
           enable = true, -- false will disable the whole extension
