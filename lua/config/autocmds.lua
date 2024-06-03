@@ -15,16 +15,16 @@ autocmd('TextYankPost', {
   end,
 })
 
---- Don't auto commenting new lines
-autocmd('BufEnter', { command = [[set formatoptions-=cro]] })
+-- Enable Spell on txt, tex, md, vim, and sh files
+autocmd('BufEnter', {
+  pattern = { '*.txt', '*.tex', '*.bib', '*.md', '*.sh' },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
 
 --- Don't auto commenting new lines
--- autocmd("BufWritePre", {
---   pattern = "*",
---   callback = function(args)
---       require("conform").format({ bufnr = args.buf })
---   end,
--- })
+autocmd('BufEnter', { command = [[set formatoptions-=cro]] })
 
 -- WhiteSpace
 autocmd('BufWritePre', {
@@ -55,11 +55,4 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
     vim.keymap.set('n', 'q', '<cmd>close!<cr>', { buffer = event.buf, silent = true })
   end,
   group = augroup('close_with_q'),
-})
-
--- TeX
-autocmd({ 'BufRead', 'BufNewFile' }, {
-  command = 'setlocal filetype=tex',
-  group = augroup('tex'),
-  pattern = { '*.tex', '*.bbl', '*.bib', '*.texx', '*.texb', '*.cls' },
 })

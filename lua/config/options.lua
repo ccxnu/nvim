@@ -20,7 +20,7 @@ opt.splitbelow = true
 
 -- Spell settings
 opt.spelllang = { 'en', 'es' }
-opt.spell = true
+opt.spell = false
 
 -- Status
 opt.conceallevel = 0 -- Nothing in hidden
