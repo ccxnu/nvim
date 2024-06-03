@@ -1,19 +1,19 @@
 return {
   'neovim/nvim-lspconfig', -- Main LSP plugin
+  event = { 'BufReadPost', 'BufNewFile' },
+  dependencies = {
+    { 'williamboman/mason.nvim', opts = {} },
+    { 'williamboman/mason-lspconfig.nvim', opts = {} },
+    'hrsh7th/cmp-nvim-lsp',
+  },
   config = function()
     local lspconfig = require('lspconfig')
-
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
     -- Function to configure keymaps and other LSP-specific behaviors
-    local on_attach = function(client, bufnr)
+    local on_attach = function(_, bufnr)
       local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
       end
-      local function buf_set_option(...)
-        vim.api.nvim_buf_set_option(bufnr, ...)
-      end
-
-      -- Enable LSP-based completion
-      buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
       -- LSP keymaps
       local opts = { noremap = true, silent = true }
@@ -22,7 +22,7 @@ return {
       buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
       buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
       buf_set_keymap('n', 'gI', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-      buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+      buf_set_keymap('n', '<C-x>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
       buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
       buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
       buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -36,13 +36,14 @@ return {
     end
 
     -- List of LSP servers to configure
-    local servers = { 'tsserver', 'tailwindcss', 'html', 'cssls', 'lua_ls', 'emmet_ls', 'marksman' }
+    local servers = { 'texlab', 'tsserver', 'tailwindcss', 'html', 'cssls', 'lua_ls', 'emmet_ls', 'marksman', 'astro' }
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup({
+        capabilities = capabilities,
         on_attach = on_attach,
-        flags = {
-          debounce_text_changes = 150,
-        },
+        vim.diagnostic.config({
+          virtual_text = false,
+        }),
       })
     end
 
@@ -72,8 +73,14 @@ return {
     lspconfig.tailwindcss.setup({
       on_attach = on_attach,
       root_dir = function(...)
-        return require('lspconfig.util').root_pattern('tailwind.config.js')(...)
+        return require('lspconfig.util').root_pattern('tailwind.config.js', 'tailwind.config.cjs')(...)
       end,
+    })
+
+    lspconfig.astro.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { 'astro' },
     })
   end,
 }

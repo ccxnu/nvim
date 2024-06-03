@@ -21,7 +21,6 @@ map('v', '<', '<gv')
 map('v', '>', '>gv')
 
 map('n', '<leader>l', ':Lazy<CR>', opts)
-map('n', '<leader>np', ':NoNeckPain<CR>', opts)
 map('n', '<leader>e', '<CMD>Oil<CR>', { desc = 'Open Filesystem' }) -- Oil
 
 -- Increment|drecement

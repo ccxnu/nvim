@@ -4,13 +4,13 @@ return {
   config = function()
     require('oil').setup({ keymaps = { ['<Esc>'] = 'actions.close' } })
   end,
-  keys = {
-    { '<Leader>e', '<cmd>Oil<cr>', mode = 'n', desc = 'Open Filesystem' },
-  },
   opts = {
     default_file_explorer = true,
     view_options = {
-      show_hidden = true,
+      show_hidden = false,
+      is_hidden_file = function(name, _)
+        return vim.startswith(name, '.')
+      end,
     },
   },
 }

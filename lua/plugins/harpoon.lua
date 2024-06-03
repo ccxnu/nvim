@@ -1,6 +1,5 @@
 return {
   'ThePrimeagen/harpoon',
-  event = 'VeryLazy',
   dependencies = { 'nvim-lua/plenary.nvim', lazy = true },
   -- stylua: ignore
   keys = {
@@ -12,7 +11,5 @@ return {
     { '<leader>4', function() require('harpoon.ui').nav_file(4) end, desc = 'Harpoon to file 4', },
     { '<leader>5', function() require('harpoon.ui').nav_file(5) end, desc = 'Harpoon to file 5', },
   },
-  config = function()
-    require('harpoon').setup()
-  end,
+  opts = { settings = { save_on_toggle = true } },
 }
