@@ -15,10 +15,12 @@ return {
       theme = 'doom',
       config = {
         header = vim.split(logo, '\n'),
+        -- stylua: ignore
         center = {
           { action = 'FzfLua files', desc = ' Find file', icon = ' ', key = 'f' },
           { action = 'FzfLua live_grep', desc = ' Find text', icon = ' ', key = 'g' },
           { action = 'FzfLua oldfiles', desc = ' Recent files', icon = ' ', key = 'r' },
+          { action = 'lua require("persistence").load()',desc = " Restore Session", icon = " ", key = "s" },
           { action = 'Lazy', desc = ' Lazy', icon = '󰒲 ', key = 'l' },
           { action = 'qa', desc = ' Quit', icon = ' ', key = 'q' },
         },

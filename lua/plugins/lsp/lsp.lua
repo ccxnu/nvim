@@ -36,11 +36,22 @@ return {
     end
 
     -- List of LSP servers to configure
-    local servers = { 'texlab', 'tsserver', 'tailwindcss', 'html', 'cssls', 'lua_ls', 'emmet_ls', 'marksman', 'astro' }
+    local servers = {
+      'texlab',
+      'tsserver',
+      'tailwindcss',
+      'html',
+      'cssls',
+      'lua_ls',
+      'emmet_ls',
+      'svelte',
+      'astro',
+      'gopls',
+    }
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup({
-        capabilities = capabilities,
         on_attach = on_attach,
+        capabilities = capabilities,
         vim.diagnostic.config({
           virtual_text = false,
         }),
@@ -67,7 +78,40 @@ return {
 
     lspconfig.emmet_ls.setup({
       on_attach = on_attach,
-      filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'svelte' },
+      filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'svelte', 'astro' },
+    })
+
+    lspconfig.tsserver.setup({
+      root_dir = function(...)
+        return require('lspconfig.util').root_pattern('.git')(...)
+      end,
+      on_attach = on_attach,
+      capabilities = capabilities,
+      single_file_support = false,
+      settings = {
+        typescript = {
+          inlayHints = {
+            includeInlayParameterNameHints = 'literal',
+            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = false,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+          },
+        },
+        javascript = {
+          inlayHints = {
+            includeInlayParameterNameHints = 'all',
+            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+          },
+        },
+      },
     })
 
     lspconfig.tailwindcss.setup({
@@ -75,12 +119,6 @@ return {
       root_dir = function(...)
         return require('lspconfig.util').root_pattern('tailwind.config.js', 'tailwind.config.cjs')(...)
       end,
-    })
-
-    lspconfig.astro.setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { 'astro' },
     })
   end,
 }

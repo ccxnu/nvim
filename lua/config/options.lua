@@ -15,18 +15,20 @@ opt.cursorline = true -- Enable highlighting of the current line
 vim.opt.colorcolumn = '80'
 
 -- Window settings
-opt.splitright = true
+opt.splitright = true -- Put new windows right of current
 opt.splitbelow = true
 
 -- Spell settings
 opt.spelllang = { 'en', 'es' }
+opt.spelloptions:append('noplainbuffer')
 opt.spell = false
 
 -- Status
 opt.conceallevel = 0 -- Nothing in hidden
 opt.swapfile = false -- creates a swap file
 opt.backup = false -- creates a backup file
-opt.showmode = false
+opt.showmode = false -- show current mode
+opt.cmdheight = 0 -- Height of the command bar, it appears when needed
 opt.showtabline = 0
 
 -- Identation

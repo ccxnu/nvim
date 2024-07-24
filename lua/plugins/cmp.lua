@@ -4,30 +4,22 @@ return {
   dependencies = {
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
-    'hrsh7th/cmp-emoji',
     'onsails/lspkind.nvim',
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+    'rafamadriz/friendly-snippets',
   },
   config = function()
+    -- load in some snippets
+    require('luasnip.loaders.from_vscode').lazy_load()
+
     local cmp = require('cmp')
-    vim.g.cmp_toggle = false
-
-    vim.keymap.set('n', '<Leader>co', function()
-      vim.g.cmp_toggle = not vim.g.cmp_toggle
-      local status
-      if vim.g.cmp_toggle then
-        status = 'ENABLED'
-      else
-        status = 'DISABLED'
-      end
-      print('Completion', status)
-    end)
-
     cmp.setup({
       sources = {
         { name = 'nvim_lsp' },
         { name = 'buffer' },
-        { name = 'emoji' },
         { name = 'path' },
+        { name = 'luasnip' },
       },
       completion = {
         completeopt = 'menu,menuone,noinsert',
@@ -44,12 +36,9 @@ return {
       formatting = {
         format = require('lspkind').cmp_format(),
       },
-      enabled = function()
-        return vim.g.cmp_toggle
-      end,
       snippet = {
         expand = function(args)
-          vim.snippet.expand(args.body)
+          require('luasnip').lsp_expand(args.body)
         end,
       },
     })
