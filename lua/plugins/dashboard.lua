@@ -5,7 +5,7 @@ return {
     local logo = [[
         |\      _,,,---,,_
     ZZZzz /,`.-'`'    -.  ;-;;,_
-         |,4-  ) )-,_. ,\ (  `'-'
+           |,4-  ) )-,_. ,\ (  `'-'
             '---''(_/--'  `-'\_)  nonyoo
     ]]
     logo = string.rep('\n', 8) .. logo .. '\n\n'
@@ -17,9 +17,9 @@ return {
         header = vim.split(logo, '\n'),
         -- stylua: ignore
         center = {
-          { action = 'FzfLua files', desc = ' Find file', icon = ' ', key = 'f' },
-          { action = 'FzfLua live_grep', desc = ' Find text', icon = ' ', key = 'g' },
-          { action = 'FzfLua oldfiles', desc = ' Recent files', icon = ' ', key = 'r' },
+          -- { action = 'FzfLua files', desc = ' Find file', icon = ' ', key = 'f' },
+          -- { action = 'FzfLua live_grep', desc = ' Find text', icon = ' ', key = 'g' },
+          -- { action = 'FzfLua oldfiles', desc = ' Recent files', icon = ' ', key = 'r' },
           { action = 'lua require("persistence").load()',desc = " Restore Session", icon = " ", key = "s" },
           { action = 'Lazy', desc = ' Lazy', icon = '󰒲 ', key = 'l' },
           { action = 'qa', desc = ' Quit', icon = ' ', key = 'q' },

@@ -40,10 +40,6 @@ return {
     },
 
     ft = { 'markdown', 'norg', 'rmd', 'org' },
-    specs = {
-      'lukas-reineke/headlines.nvim',
-      enabled = false,
-    },
   },
 
   {

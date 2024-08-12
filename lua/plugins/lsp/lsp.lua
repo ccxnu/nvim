@@ -1,6 +1,6 @@
 return {
   'neovim/nvim-lspconfig', -- Main LSP plugin
-  event = { 'BufReadPost', 'BufNewFile' },
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     { 'williamboman/mason.nvim', opts = {} },
     { 'williamboman/mason-lspconfig.nvim', opts = {} },
@@ -51,7 +51,7 @@ return {
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup({
         on_attach = on_attach,
-        capabilities = capabilities,
+        -- capabilities = capabilities,
         vim.diagnostic.config({
           virtual_text = false,
         }),
@@ -61,6 +61,7 @@ return {
     -- Specific configuration for Lua LSP server
     lspconfig.lua_ls.setup({
       on_attach = on_attach,
+      --capabilities = capabilities,
       settings = {
         Lua = {
           diagnostics = {
@@ -78,6 +79,7 @@ return {
 
     lspconfig.emmet_ls.setup({
       on_attach = on_attach,
+      --capabilities = capabilities,
       filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'svelte', 'astro' },
     })
 
@@ -116,6 +118,7 @@ return {
 
     lspconfig.tailwindcss.setup({
       on_attach = on_attach,
+      --capabilities = capabilities,
       root_dir = function(...)
         return require('lspconfig.util').root_pattern('tailwind.config.js', 'tailwind.config.cjs')(...)
       end,
