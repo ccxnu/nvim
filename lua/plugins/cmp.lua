@@ -24,7 +24,6 @@ return {
       completion = {
         completeopt = 'menu,menuone,noinsert',
       },
-      preselect = cmp.PreselectMode.None,
       mapping = {
         ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -40,6 +39,13 @@ return {
         expand = function(args)
           require('luasnip').lsp_expand(args.body)
         end,
+      },
+    })
+    -- '/' cmdline completion
+    cmp.setup.cmdline('/', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' },
       },
     })
   end,

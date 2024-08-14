@@ -10,8 +10,8 @@ opt.nu = true
 opt.relativenumber = true
 opt.termguicolors = true
 opt.clipboard = 'unnamedplus' -- Sync with system clipboard
-opt.mouse = '' -- Disable mouse mode
-opt.cursorline = true -- Enable highlighting of the current line
+opt.mouse = ''                -- Disable mouse mode
+opt.cursorline = true         -- Enable highlighting of the current line
 vim.opt.colorcolumn = '80'
 
 -- Window settings
@@ -26,15 +26,15 @@ opt.spell = false
 -- Status
 opt.conceallevel = 0 -- Nothing in hidden
 opt.swapfile = false -- creates a swap file
-opt.backup = false -- creates a backup file
+opt.backup = false   -- creates a backup file
 opt.showmode = false -- show current mode
-opt.cmdheight = 0 -- Height of the command bar, it appears when needed
+opt.cmdheight = 0    -- Height of the command bar, it appears when needed
 opt.showtabline = 0
 
 -- Identation
-opt.tabstop = 2 -- A TAB character looks like 4 spaces
-opt.softtabstop = 2 -- Number of spaces inserted instead of a TAB character
-opt.shiftwidth = 2 -- Number of spaces inserted when indenting
+opt.tabstop = 2      -- A TAB character looks like 4 spaces
+opt.softtabstop = 2  -- Number of spaces inserted instead of a TAB character
+opt.shiftwidth = 2   -- Number of spaces inserted when indenting
 opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
 opt.smartindent = true
 opt.showbreak = string.rep(' ', 2)

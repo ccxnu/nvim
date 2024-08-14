@@ -1,11 +1,12 @@
 ----------------------------------------------------------
 --- Variables
 -----------------------------------------------------------
-local discipline = require('me.discipline')
-discipline.cowboy()
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
+
+local discipline = require('me.discipline')
+discipline.cowboy()
 
 -----------------------------------------------------------
 --- Keymaps
@@ -20,7 +21,7 @@ local opts = { noremap = true, silent = true }
 map('v', '<', '<gv')
 map('v', '>', '>gv')
 
-map('n', '<leader>l', ':Lazy<CR>', opts)
+map('n', '<leader>l', '<CMD>Lazy<CR>', opts)
 map('n', '<leader>e', '<CMD>Oil<CR>', { desc = 'Open Filesystem' }) -- Oil
 
 -- Increment|drecement

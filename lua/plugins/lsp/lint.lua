@@ -1,8 +1,3 @@
-local function eslint_config_exists()
-  local eslintrc = vim.fn.glob('.eslintrc*')
-  return eslintrc ~= ''
-end
-
 return {
   'mfussenegger/nvim-lint',
   event = { 'BufReadPre', 'BufNewFile' }, -- to disable, comment this out
@@ -10,11 +5,11 @@ return {
     local lint = require('lint')
 
     lint.linters_by_ft = {
-      javascript = eslint_config_exists() and { 'eslint_d' } or {},
-      typescript = eslint_config_exists() and { 'eslint_d' } or {},
-      typescriptreact = eslint_config_exists() and { 'eslint_d' } or {},
-      javascriptreact = eslint_config_exists() and { 'eslint_d' } or {},
-      astro = eslint_config_exists() and { 'eslint_d' } or {},
+      javascript = { 'eslint_d' },
+      typescript = { 'eslint_d' },
+      javascriptreact = { 'eslint_d' },
+      typescriptreact = { 'eslint_d' },
+      astro = { 'eslint_d' },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
@@ -25,6 +20,23 @@ return {
         lint.try_lint()
       end,
     })
+
+    -- Wrap eslint_d to ignore "No ESLint configuration found" error
+    lint.linters.eslint_d = require('lint.util').wrap(lint.linters.eslint_d, function(diagnostic)
+      -- try to ignore "No ESLint configuration found" error
+      -- if diagnostic.message:find("Error: No ESLint configuration found") then -- old version
+      -- update: 20240814, following is working
+      if diagnostic.message:find('Error: Could not find config file') then
+        return nil
+      end
+      return diagnostic
+    end)
+
+    -- Set pylint to work in virtualenv
+    lint.linters.pylint = {
+      cmd = 'python',
+      args = { '-m', 'pylint', '-f', 'json' },
+    }
 
     vim.keymap.set('n', '<leader>i', function()
       lint.try_lint()

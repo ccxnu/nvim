@@ -1,8 +1,8 @@
 return {
   'neovim/nvim-lspconfig', -- Main LSP plugin
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = { 'BufReadPre', 'BufNewFile', 'BufReadPost' },
   dependencies = {
-    { 'williamboman/mason.nvim', opts = {} },
+    { 'williamboman/mason.nvim',           opts = {} },
     { 'williamboman/mason-lspconfig.nvim', opts = {} },
     'hrsh7th/cmp-nvim-lsp',
   },
@@ -47,6 +47,7 @@ return {
       'svelte',
       'astro',
       'gopls',
+      'angularls',
     }
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup({
