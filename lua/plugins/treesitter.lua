@@ -11,7 +11,7 @@ return { -- Highlight, edit, and navigate code
           enable = true,                    -- false will disable the whole extension
           disable = { 'c', 'cpp', 'bash' }, -- list of language that will be disabled
         },
-        indent = { enable = true },
+        indent = { enable = false },
       })
     end,
   },

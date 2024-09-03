@@ -2,7 +2,7 @@ return {
   'neovim/nvim-lspconfig', -- Main LSP plugin
   event = { 'BufReadPre', 'BufNewFile', 'BufReadPost' },
   dependencies = {
-    { 'williamboman/mason.nvim',           opts = {} },
+    { 'williamboman/mason.nvim', opts = {} },
     { 'williamboman/mason-lspconfig.nvim', opts = {} },
     'hrsh7th/cmp-nvim-lsp',
   },
@@ -32,7 +32,6 @@ return {
       buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
       buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
       buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-      buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
     end
 
     -- List of LSP servers to configure
@@ -44,10 +43,9 @@ return {
       'cssls',
       'lua_ls',
       'emmet_ls',
-      'svelte',
       'astro',
-      'gopls',
-      'angularls',
+      'volar',
+      'pyright',
     }
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup({
@@ -81,7 +79,7 @@ return {
     lspconfig.emmet_ls.setup({
       on_attach = on_attach,
       --capabilities = capabilities,
-      filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'svelte', 'astro' },
+      filetypes = { 'html', 'css', 'sass', 'scss', 'less', 'svelte', 'astro' },
     })
 
     lspconfig.tsserver.setup({

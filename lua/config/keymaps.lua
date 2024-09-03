@@ -22,7 +22,8 @@ map('v', '<', '<gv')
 map('v', '>', '>gv')
 
 map('n', '<leader>l', '<CMD>Lazy<CR>', opts)
-map('n', '<leader>e', '<CMD>Oil<CR>', { desc = 'Open Filesystem' }) -- Oil
+map('n', '<leader>e', '<CMD>Oil<CR>', { desc = 'Open Filesystem' })                 -- Oil
+map('n', '<leader>su', '<CMD>SupermavenToggle<CR>', { desc = 'Toggle Supermaven' }) -- Supermaven
 
 -- Increment|drecement
 map('n', '+', '<C-a>')

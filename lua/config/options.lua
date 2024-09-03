@@ -11,8 +11,7 @@ opt.relativenumber = true
 opt.termguicolors = true
 opt.clipboard = 'unnamedplus' -- Sync with system clipboard
 opt.mouse = ''                -- Disable mouse mode
-opt.cursorline = true         -- Enable highlighting of the current line
-vim.opt.colorcolumn = '80'
+opt.colorcolumn = '80'
 
 -- Window settings
 opt.splitright = true -- Put new windows right of current
@@ -33,9 +32,9 @@ opt.showtabline = 0
 
 -- Identation
 opt.tabstop = 2      -- A TAB character looks like 4 spaces
-opt.softtabstop = 2  -- Number of spaces inserted instead of a TAB character
 opt.shiftwidth = 2   -- Number of spaces inserted when indenting
 opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+opt.autoindent = true
 opt.smartindent = true
 opt.showbreak = string.rep(' ', 2)
 
@@ -44,7 +43,7 @@ opt.undofile = true
 opt.undolevels = 10000
 opt.incsearch = true
 
-opt.scrolloff = 5
+opt.scrolloff = 4
 opt.signcolumn = 'yes'
 opt.isfname:append('@-@')
 opt.updatetime = 50
