@@ -5,10 +5,10 @@ return { -- Highlight, edit, and navigate code
     event = 'VeryLazy',
     config = function()
       require('nvim-treesitter.configs').setup({
-        ensure_installed = { 'markdown', 'lua', 'xml', 'http', 'json' },
-        auto_install = true,                -- Autoinstall languages that are not installed
+        ensure_installed = { 'lua', 'xml', 'http', 'json' },
+        auto_install = false, -- Autoinstall languages that are not installed
         highlight = {
-          enable = true,                    -- false will disable the whole extension
+          enable = true, -- false will disable the whole extension
           disable = { 'c', 'cpp', 'bash' }, -- list of language that will be disabled
         },
         indent = { enable = false },

@@ -40,6 +40,9 @@ require('lazy').setup({
       'tohtml',
       'tutor',
       'zipPlugin',
+      '2html_plugin',
+      'getscript',
+      'getscriptPlugin',
     },
   },
 })

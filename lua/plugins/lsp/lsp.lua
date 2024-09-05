@@ -42,9 +42,7 @@ return {
       'html',
       'cssls',
       'lua_ls',
-      'emmet_ls',
       'astro',
-      'volar',
       'pyright',
     }
     for _, lsp in ipairs(servers) do
@@ -76,11 +74,11 @@ return {
       },
     })
 
-    lspconfig.emmet_ls.setup({
-      on_attach = on_attach,
-      --capabilities = capabilities,
-      filetypes = { 'html', 'css', 'sass', 'scss', 'less', 'svelte', 'astro' },
-    })
+    -- lspconfig.emmet_ls.setup({
+    -- on_attach = on_attach,
+    --capabilities = capabilities,
+    -- filetypes = { 'html', 'css', 'sass', 'scss', 'less', 'svelte', 'astro' },
+    -- })
 
     lspconfig.tsserver.setup({
       root_dir = function(...)
