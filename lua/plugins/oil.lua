@@ -1,11 +1,12 @@
 return {
   'stevearc/oil.nvim',
+  event = 'VeryLazy',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('oil').setup({
       keymaps = {
-        ['<Esc>'] = {'actions.close'},
-      }
+        ['<Esc>'] = { 'actions.close' },
+      },
     })
   end,
   opts = {

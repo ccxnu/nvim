@@ -8,7 +8,6 @@ return {
   },
   config = function()
     local lspconfig = require('lspconfig')
-    local capabilities = require('cmp_nvim_lsp').default_capabilities()
     -- Function to configure keymaps and other LSP-specific behaviors
     local on_attach = function(_, bufnr)
       local function buf_set_keymap(...)
@@ -37,18 +36,15 @@ return {
     -- List of LSP servers to configure
     local servers = {
       'texlab',
-      'tsserver',
-      'tailwindcss',
-      'html',
+      'vtsls',
       'cssls',
       'lua_ls',
-      'astro',
       'pyright',
+      'prismals',
     }
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup({
         on_attach = on_attach,
-        -- capabilities = capabilities,
         vim.diagnostic.config({
           virtual_text = false,
         }),
@@ -58,7 +54,6 @@ return {
     -- Specific configuration for Lua LSP server
     lspconfig.lua_ls.setup({
       on_attach = on_attach,
-      --capabilities = capabilities,
       settings = {
         Lua = {
           diagnostics = {
@@ -76,49 +71,61 @@ return {
 
     -- lspconfig.emmet_ls.setup({
     -- on_attach = on_attach,
-    --capabilities = capabilities,
     -- filetypes = { 'html', 'css', 'sass', 'scss', 'less', 'svelte', 'astro' },
     -- })
 
-    lspconfig.tsserver.setup({
+    lspconfig.vtsls.setup({
       root_dir = function(...)
-        return require('lspconfig.util').root_pattern('.git')(...)
+        return require('lspconfig.util').root_pattern('.git', 'tsconfig.json')(...)
       end,
       on_attach = on_attach,
-      capabilities = capabilities,
       single_file_support = false,
       settings = {
         typescript = {
           inlayHints = {
-            includeInlayParameterNameHints = 'literal',
-            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-            includeInlayFunctionParameterTypeHints = true,
-            includeInlayVariableTypeHints = false,
-            includeInlayPropertyDeclarationTypeHints = true,
-            includeInlayFunctionLikeReturnTypeHints = true,
-            includeInlayEnumMemberValueHints = true,
+            enumMemberValues = { enabled = false },
+            functionLikeReturnTypes = { enabled = false },
+            parameterNames = { enabled = false },
+            parameterTypes = { enabled = false },
+            propertyDeclarationTypes = { enabled = false },
+            variableTypes = { enabled = false },
           },
         },
-        javascript = {
-          inlayHints = {
-            includeInlayParameterNameHints = 'all',
-            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-            includeInlayFunctionParameterTypeHints = true,
-            includeInlayVariableTypeHints = true,
-            includeInlayPropertyDeclarationTypeHints = true,
-            includeInlayFunctionLikeReturnTypeHints = true,
-            includeInlayEnumMemberValueHints = true,
-          },
-        },
+        -- javascript = {
+        --   inlayHints = {
+        --     includeInlayParameterNameHints = 'all',
+        --     includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+        --     includeInlayFunctionParameterTypeHints = true,
+        --     includeInlayVariableTypeHints = true,
+        --     includeInlayPropertyDeclarationTypeHints = true,
+        --     includeInlayFunctionLikeReturnTypeHints = true,
+        --     includeInlayEnumMemberValueHints = true,
+        --   },
+        -- },
       },
     })
 
-    lspconfig.tailwindcss.setup({
-      on_attach = on_attach,
-      --capabilities = capabilities,
-      root_dir = function(...)
-        return require('lspconfig.util').root_pattern('tailwind.config.js', 'tailwind.config.cjs')(...)
-      end,
-    })
+    -- lspconfig.gopls.setup({
+    --   settings = {
+    --     gopls = {
+    --       hints = {
+    --         assignVariableTypes = false,
+    --         compositeLiteralFields = false,
+    --         compositeLiteralTypes = false,
+    --         constantValues = false,
+    --         functionTypeParameters = false,
+    --         parameterNames = false,
+    --         rangeVariableTypes = false,
+    --       },
+    --     },
+    --   },
+    -- })
+
+    -- lspconfig.tailwindcss.setup({
+    --   on_attach = on_attach,
+    --   root_dir = function(...)
+    --     return require('lspconfig.util').root_pattern('tailwind.config.js', 'tailwind.config.cjs')(...)
+    --   end,
+    -- })
   end,
 }

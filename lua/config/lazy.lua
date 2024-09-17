@@ -22,10 +22,7 @@ require('lazy').setup({
     { import = 'plugins.lsp' }, -- Load lsp
   },
   defaults = {
-    lazy = false, -- plugins are not lazy loaded by default
-  },
-  ui = {
-    border = 'rounded',
+    lazy = true, -- plugins are not lazy loaded by default
   },
   change_detection = {
     notify = false,
@@ -35,14 +32,24 @@ require('lazy').setup({
       'gzip',
       'matchit',
       'matchparen',
+      'netrw',
       'netrwPlugin',
+      'netrwSettings',
+      'netrwFileHandlers',
+      'tar',
       'tarPlugin',
       'tohtml',
       'tutor',
-      'zipPlugin',
       '2html_plugin',
       'getscript',
       'getscriptPlugin',
+      'logipat',
+      'rrhelper',
+      'spellfile_plugin',
+      'vimball',
+      'vimballPlugin',
+      'zip',
+      'zipPlugin',
     },
   },
 })

@@ -18,8 +18,6 @@ opt.splitright = true -- Put new windows right of current
 opt.splitbelow = true
 
 -- Spell settings
-opt.spelllang = { 'en', 'es' }
-opt.spelloptions:append('noplainbuffer')
 opt.spell = false
 
 -- Status
