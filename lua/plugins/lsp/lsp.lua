@@ -40,7 +40,6 @@ return {
       'cssls',
       'lua_ls',
       'pyright',
-      'prismals',
     }
     for _, lsp in ipairs(servers) do
       lspconfig[lsp].setup({
