@@ -30,9 +30,9 @@ map('n', '+', '<C-a>')
 map('n', '-', '<C-x>')
 
 -- New tab
-map('n', 'te', ':tab split<CR>', opts)
-map('n', '<tab>', ':tabnext<Return>', opts)
-map('n', '<s-tab>', ':tabprev<Return>', opts)
+-- map('n', 'te', ':tab split<CR>', opts)
+-- map('n', '<tab>', ':tabnext<Return>', opts)
+-- map('n', '<s-tab>', ':tabprev<Return>', opts)
 
 -- Select All
 map('n', '<C-a>', 'gg<S-v>G')

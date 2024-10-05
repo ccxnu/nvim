@@ -26,10 +26,10 @@ opt.swapfile = false -- creates a swap file
 opt.backup = false -- creates a backup file
 opt.showmode = false -- show current mode
 opt.cmdheight = 0 -- Height of the command bar, it appears when needed
-opt.showtabline = 0
+--opt.showtabline = 0 -- Hide tabs
 
 -- Identation
-opt.tabstop = 2 -- A TAB character looks like 4 spaces
+opt.tabstop = 2 -- A TAB character looks like 2 spaces
 opt.shiftwidth = 2 -- Number of spaces inserted when indenting
 opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
 
@@ -37,20 +37,22 @@ opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB
 vim.cmd('filetype plugin indent off')
 vim.cmd('filetype indent off')
 
--- Undo, search
+-- Undo
 opt.undofile = true
 opt.undolevels = 10000
-opt.incsearch = true
 
-opt.scrolloff = 4
+-- Search
+opt.incsearch = true
+opt.smartcase = true
+
+opt.scrolloff = 3
 opt.signcolumn = 'yes'
 opt.isfname:append('@-@')
 opt.updatetime = 50
 
--- Folding
-opt.fillchars = { fold = ' ' }
-opt.foldmethod = 'indent'
-opt.foldenable = false
+-- Fold
+opt.foldenable = true
 opt.foldlevel = 99
-
-opt.syntax = 'off'
+opt.foldlevelstart = 99
+opt.foldmethod = 'indent' -- indent, expr
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'

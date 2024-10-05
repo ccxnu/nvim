@@ -6,6 +6,7 @@ function M.cowboy()
   local ok = true
   for _, key in ipairs({ 'h', 'j', 'k', 'l', '+', '-' }) do
     local count = 0
+    ---@diagnostic disable-next-line: undefined-field
     local timer = assert(vim.uv.new_timer())
     local map = key
     vim.keymap.set('n', key, function()

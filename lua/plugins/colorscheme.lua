@@ -1,5 +1,5 @@
 return {
-  'cuencapablo/rosebones',
+  'ccxnu/rosebones',
   lazy = false,
   priority = 1000,
   opts = {
