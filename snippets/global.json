@@ -1,0 +1,27 @@
+{
+  "copyright": {
+    "prefix": "c)",
+    "body": ["Copyright (c) ${CURRENT_YEAR} ${0:Author}. All Rights Reserved."],
+    "description": "Snippet to put copyright"
+  },
+  "datetime": {
+    "prefix": "datetime",
+    "body": ["${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${CURRENT_HOUR}:${CURRENT_MINUTE}"],
+    "description": "I give you back the time and date (Y-m-d H:M)"
+  },
+  "diso": {
+    "prefix": "diso",
+    "body": ["${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}T${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND}"],
+    "description": "ISO date time stamp"
+  },
+  "datename": {
+    "prefix": "dateName",
+    "body": ["${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}${CURRENT_HOUR}${CURRENT_MINUTE}${CURRENT_SECOND}"],
+    "description": "I give you back the time and date (202410281432)"
+  },
+  "uuid": {
+    "prefix": "uuid",
+    "body": "${UUID}",
+    "description": "A Version 4 UUID"
+  }
+}
