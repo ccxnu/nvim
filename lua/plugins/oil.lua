@@ -1,23 +1,21 @@
 return {
   'stevearc/oil.nvim',
   event = 'VeryLazy',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('oil').setup({
       keymaps = {
         ['<Esc>'] = { 'actions.close' },
       },
+      delete_to_trash = true,
+      skip_confirm_for_simple_edits = true,
+      default_file_explorer = true,
+      columns = {},
+      view_options = {
+        show_hidden = false,
+        is_hidden_file = function(name, _)
+          return vim.startswith(name, '.')
+        end,
+      },
     })
   end,
-  opts = {
-    delete_to_trash = true,
-    skip_confirm_for_simple_edits = true,
-    default_file_explorer = true,
-    view_options = {
-      show_hidden = false,
-      is_hidden_file = function(name, _)
-        return vim.startswith(name, '.')
-      end,
-    },
-  },
 }

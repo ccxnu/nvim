@@ -1,6 +1,6 @@
-require('config.options')
-require('config.keymaps')
-require('config.autocmds')
+require('core.options')
+require('core.keymaps')
+require('core.autocmds')
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 ---@diagnostic disable-next-line: undefined-field
@@ -20,7 +20,6 @@ require('lazy').setup({
   spec = {
     -- import any extras modules here
     { import = 'plugins' }, -- loads all plugins in plugins/
-    { import = 'plugins.lsp' }, -- Load lsp
   },
   defaults = {
     lazy = true, -- plugins are not lazy loaded by default
@@ -46,7 +45,6 @@ require('lazy').setup({
       'getscriptPlugin',
       'logipat',
       'rrhelper',
-      'spellfile_plugin',
       'vimball',
       'vimballPlugin',
       'zip',
@@ -55,4 +53,5 @@ require('lazy').setup({
   },
 })
 
+-- vim.opt.runtimepath:append(vim.fn.expand('$HOME') .. '/Dev/rosebones')
 vim.cmd.colorscheme('rosebones')

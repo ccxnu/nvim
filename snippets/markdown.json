@@ -365,12 +365,12 @@
     "description": "Create a superscript."
   },
   "Insert Note": {
-    "prefix": ["note", "n"],
+    "prefix": "note",
     "body": "> [!NOTE]\n> ",
     "description": "Insert Note"
   },
   "Insert Tip": {
-    "prefix": ["tip", "t"],
+    "prefix": "tip",
     "body": "> [!TIP]\n> ",
     "description": "Insert Tip"
   },
@@ -380,7 +380,7 @@
     "description": "Insert Important"
   },
   "Insert Warning": {
-    "prefix": ["warning", "w"],
+    "prefix": "warning",
     "body": "> [!WARNING]\n> ",
     "description": "Insert Warning"
   },

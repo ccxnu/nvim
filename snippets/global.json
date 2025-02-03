@@ -19,6 +19,11 @@
     "body": ["${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}${CURRENT_HOUR}${CURRENT_MINUTE}${CURRENT_SECOND}"],
     "description": "I give you back the time and date (202410281432)"
   },
+  "datesummary": {
+    "prefix": "dateSummary",
+    "body": ["${CURRENT_YEAR}${CURRENT_MONTH}${CURRENT_DATE}"],
+    "description": "I give you back the time and date (202410281432)"
+  },
   "uuid": {
     "prefix": "uuid",
     "body": "${UUID}",

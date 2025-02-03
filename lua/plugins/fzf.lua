@@ -7,11 +7,6 @@ return {
     { ';f', function() require('fzf-lua').files() end, },
     { ';r', function() require('fzf-lua').live_grep() end, },
     { ';h', function() require('fzf-lua').oldfiles() end, },
-    { ';b', function() require('fzf-lua').buffers() end, },
-    { ';t', function() require('fzf-lua').tabs() end, },
-    { ';o', function() require('fzf-lua').help_tags() end, },
-    { ';;', function() require('fzf-lua').resume() end, },
-    { ';d', function() require('fzf-lua').diagnostics_workspace() end, },
   },
 
   config = function()

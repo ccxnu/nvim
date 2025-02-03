@@ -125,6 +125,11 @@
     "body": "\\nonumber",
     "description": "nonumber"
   },
+  "begin": {
+    "prefix": "beg",
+    "body": "\\begin{$1}\n\t${0}\n\\end{$1}",
+    "description": "Wrap selection into an environment"
+  },
   "equation": {
     "prefix": "BEQ",
     "body": "\\begin{equation}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{equation}",
@@ -516,6 +521,7 @@
     "description": "left[ ... right]"
   },
   "wrapEnv": {
+    "prefix": "BWE",
     "body": "\n\\begin{$1}\n\t${0:${TM_SELECTED_TEXT}}\n\\end{$1}",
     "description": "Wrap selection into an environment"
   },

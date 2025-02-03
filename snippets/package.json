@@ -55,13 +55,6 @@
       },
       {
         "language": [
-          "plaintex",
-          "tex"
-        ],
-        "path": "./latex/latex-snippets.json"
-      },
-      {
-        "language": [
           "bibtex",
           "bib"
         ],

@@ -16,12 +16,12 @@ autocmd('TextYankPost', {
 })
 
 -- Enable Spell on txt, tex, md, vim, and sh files
--- autocmd('BufEnter', {
---   pattern = { '*.txt', '*.tex', '*.bib', '*.md', '*.sh' },
---   callback = function()
---     vim.opt_local.spell = true
---   end,
--- })
+autocmd('BufEnter', {
+  pattern = { '*.txt', '*.tex', '*.bib', '*.md' },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
 
 --- Don't auto commenting new lines
 autocmd('BufEnter', { command = [[set formatoptions-=cro]] })

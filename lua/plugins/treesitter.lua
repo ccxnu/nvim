@@ -9,7 +9,7 @@ return { -- Highlight, edit, and navigate code
         auto_install = false, -- Autoinstall languages that are not installed
         highlight = {
           enable = true, -- false will disable the whole extension
-          disable = { 'c', 'cpp', 'bash' }, -- list of language that will be disabled
+          -- disable = { 'c', 'cpp', 'bash' }, -- list of language that will be disabled
         },
         indent = { enable = false },
       })
