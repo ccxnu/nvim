@@ -1,5 +1,5 @@
 return {
-  'ccxnu/rosebones',
-  lazy = false,
-  priority = 1000,
+    -- 'ccxnu/rosebones',
+    -- lazy = false,
+    -- priority = 1000,
 }
