@@ -26,11 +26,11 @@ autocmd("BufEnter", {
 --- Don't auto commenting new lines
 autocmd("BufEnter", { command = [[set formatoptions-=cro]] })
 
--- WhiteSpace
-autocmd("BufWritePre", {
-    command = [[%s/\s\+$//e]],
-    group = augroup("whitespace"),
-})
+-- -- WhiteSpace
+-- autocmd("BufWritePre", {
+--     command = [[%s/\s\+$//e]],
+--     group = augroup("whitespace"),
+-- })
 
 --- Close with q
 vim.api.nvim_create_autocmd({ "FileType" }, {

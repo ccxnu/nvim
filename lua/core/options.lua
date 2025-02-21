@@ -33,6 +33,7 @@ opt.cmdheight = 0 -- Height of the command bar, it appears when needed
 -- Identation
 opt.tabstop = 4 -- A TAB character looks like 2 spaces
 opt.shiftwidth = 4 -- Number of spaces inserted when indenting
+opt.softtabstop = 4
 opt.autoindent = false
 opt.smartindent = false
 opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
@@ -57,6 +58,10 @@ opt.foldlevel = 99
 opt.foldlevelstart = 99
 opt.foldmethod = "indent" -- indent, expr
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
+vim.opt.list = false
+vim.opt.listchars:append("space:·")
+vim.opt.listchars:append("tab:→·")
 
 -- Netrw
 g.loaded_netrwPlugin = 0
