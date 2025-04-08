@@ -3,6 +3,7 @@ local servers = {
     "vtsls",
     "lua_ls",
     "omnisharp",
+    "pylsp",
 }
 
 return {
@@ -88,6 +89,21 @@ return {
         -- 		},
         -- 	},
         -- })
+
+        lspconfig.pylsp.setup({
+            capabilities = capabilities,
+            settings = {
+                pylsp = {
+                    plugins = {
+                        pycodestyle = {
+                            enabled = true,
+                            ignore = { "E501", "E231" },
+                            maxLineLength = 120,
+                        },
+                    },
+                },
+            },
+        })
 
         vim.api.nvim_create_autocmd("LspAttach", {
             callback = function(args)

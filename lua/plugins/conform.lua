@@ -12,7 +12,7 @@ return {
                 -- javascript = { "prettier" },
                 -- json = { "prettier" },
                 -- markdown = { "prettier" },
-                -- python = { "black" },
+                python = { "ruff" },
             },
         })
 
