@@ -59,9 +59,9 @@ opt.foldlevelstart = 99
 opt.foldmethod = "indent" -- indent, expr
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
+-- Show whitespaces
 vim.opt.list = false
-vim.opt.listchars:append("space:·")
-vim.opt.listchars:append("tab:→·")
+vim.opt.listchars = { space = "·", trail = "⋅", tab = "→·" }
 
 -- Netrw
 g.loaded_netrwPlugin = 0

@@ -13,7 +13,7 @@ return {
             view_options = {
                 show_hidden = false,
                 is_hidden_file = function(name, _)
-                    return vim.startswith(name, ".")
+                    return vim.startswith(name, ".") or vim.endswith(name, "obj") or vim.endswith(name, "bin")
                 end,
             },
         })

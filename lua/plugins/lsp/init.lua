@@ -3,6 +3,7 @@ local servers = {
     "vtsls",
     "lua_ls",
     "omnisharp",
+    "gopls",
     "pylsp",
 }
 
@@ -15,20 +16,22 @@ return {
         local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+        vim.diagnostic.config({
+            virtual_text = false,
+            signs = true,
+            update_in_insert = false,
+            underline = true,
+            float = {
+                show_header = false,
+                source = "if_many",
+                border = "rounded",
+                focusable = false,
+            },
+        })
+
         for _, lsp in ipairs(servers) do
             lspconfig[lsp].setup({
-                vim.diagnostic.config({
-                    virtual_text = false,
-                    signs = true,
-                    update_in_insert = false,
-                    underline = true,
-                    float = {
-                        show_header = false,
-                        source = "if_many",
-                        border = "rounded",
-                        focusable = false,
-                    },
-                }),
+                capabilities = capabilities,
             })
         end
 
@@ -76,19 +79,6 @@ return {
                 },
             },
         })
-
-        -- lspconfig.gopls.setup({
-        -- 	capabilities = capabilities,
-        -- 	settings = {
-        -- 		gopls = {
-        -- 			analyses = {
-        -- 				unusedparams = true,
-        -- 			},
-        -- 			staticcheck = true,
-        -- 			templateExtensions = { "gohtml" },
-        -- 		},
-        -- 	},
-        -- })
 
         lspconfig.pylsp.setup({
             capabilities = capabilities,
