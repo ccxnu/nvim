@@ -1,6 +1,6 @@
 return {
     "stevearc/oil.nvim",
-    event = "VeryLazy",
+    event = { "VeryLazy" },
     config = function()
         require("oil").setup({
             keymaps = {

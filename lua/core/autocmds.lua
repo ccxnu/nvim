@@ -8,6 +8,15 @@ local function augroup(name)
     return vim.api.nvim_create_augroup("nvimtraap_" .. name, { clear = true })
 end
 
+-- Set colorcolumn to 120 for .tex and .bib files
+autocmd("FileType", {
+    pattern = { "tex", "bib" },
+    group = augroup("colorcolumn_latex"),
+    callback = function()
+        vim.opt_local.colorcolumn = "100"
+    end,
+})
+
 --- Highlight on yank
 autocmd("TextYankPost", {
     callback = function()

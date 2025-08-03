@@ -1,10 +1,6 @@
 return {
     {
         "sindrets/diffview.nvim",
-        dependencies = {
-            { "nvim-tree/nvim-web-devicons", lazy = true },
-        },
-
         keys = {
             {
                 "dv",
@@ -17,6 +13,9 @@ return {
                 end,
                 desc = "Toggle Diffview window",
             },
+        },
+        opts = {
+            use_icons = false, -- Requires nvim-web-devicons
         },
     },
 }

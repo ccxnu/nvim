@@ -4,8 +4,6 @@
 
 local map = vim.keymap.set
 
--- local discipline = require('me.discipline')
--- discipline.cowboy()
 local opts = { noremap = true, silent = true }
 
 -----------------------------------------------------------
@@ -20,7 +18,7 @@ map("n", "<leader>ra", "<C-w>_<C-w>|", { desc = "full si[z]e" })
 map("n", "<leader>ro", "<C-w>=", { desc = "even si[Z]e" })
 
 -- Coding
-map("i", "{<CR>", "{<CR>}<Esc>O", opts)
+-- map("i", "{<CR>", "{<CR>}<Esc>O", opts)
 
 -- Better indenting
 map("v", "<", "<gv")
@@ -28,7 +26,6 @@ map("v", ">", ">gv")
 
 map("n", "<leader>l", "<CMD>Lazy<CR>", { desc = "Open Lazy", noremap = true, silent = true })
 map("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open Filesystem", noremap = true, silent = true }) -- Oil
-map("n", "<leader>wo", "<CMD>Markview toggle<CR>", { desc = "Toggle Markview", noremap = true, silent = true }) -- Oil
 
 -- Increment|drecement
 map("n", "+", "<C-a>")
@@ -38,7 +35,6 @@ map("n", "-", "<C-x>")
 map("i", "<C-l>", "<C-g>u<Esc>[s1z=`]a<C-g>u", opts)
 
 -- Select All
---map('n', '<C-a>', 'gg<S-v>G')
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
