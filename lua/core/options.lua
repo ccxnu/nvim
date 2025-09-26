@@ -1,68 +1,61 @@
-local opt = vim.opt
+local p = vim.opt
 local g = vim.g
 
--- Leader keys
-g.mapleader = vim.keycode("<space>")
-g.maplocalleader = vim.keycode(",")
+g.mapleader = " "
+g.maplocalleader = ","
 
--- Basic settings
-opt.nu = true -- Line of numbers
-opt.syntax = "off" -- Text color by regex
-opt.termguicolors = true
-opt.clipboard = "unnamedplus" -- Sync with system clipboard
-opt.mouse = "" -- Disable mouse mode
-opt.colorcolumn = "80" -- Column in the middle of the screen
-g.syntastic_auto_jump = 0 -- Don't jump on saving
+--- UI / Apariencia Visual
+p.termguicolors = true -- Habilita colores de 24-bit
+p.laststatus = 3 -- Siempre muestra la barra de estado
+p.cmdheight = 0 -- Oculta la línea de comandos hasta que se necesite
+p.showmode = false -- No mostrar el modo actual (ej. -- INSERT --)
+p.colorcolumn = "100" -- Línea vertical en la columna 100
+p.signcolumn = "yes" -- Muestra siempre la columna de signos (para git, LSP, etc.)
+p.cursorline = true -- Resalta la línea actual del cursor
+p.cursorlineopt = "number" -- Resalta solo el número de la línea actual
+p.number = true -- Muestra los números de línea
+p.conceallevel = 0 -- Muestra todos los símbolos (ej. `*` en Markdown)
+p.list = false -- No mostrar caracteres invisibles por defecto
+p.listchars = { space = "·", trail = "⋅", tab = "→ " }
 
--- Window settings
-opt.splitright = true -- Put new windows right of current
-opt.splitbelow = true -- Put new windows below of current
+--- Comportamiento del Editor
+-- Indentación
+p.expandtab = true -- Usa espacios en lugar de tabs
+p.shiftwidth = 4 -- Tamaño de la indentación
+p.tabstop = 4 -- Ancho de un carácter de tabulación
+p.softtabstop = 4 -- Espacios a insertar/borrar al usar Tab/Backspace
 
--- Spell settings
-opt.spelllang = { "es", "en" } -- Languages to check spell
-opt.spell = false -- Don't use spell by default
+-- Búsqueda
+p.incsearch = true -- Muestra resultados de búsqueda mientras escribes
+p.smartcase = true -- Ignora mayúsculas en la búsqueda si todo está en minúsculas
 
--- Status
-opt.conceallevel = 0 -- Hides code blocks symbols and simplify links [0,1,2,3]
-opt.swapfile = false -- Creates a swap file
-opt.backup = false -- Creates a backup file
-opt.showmode = false -- Show current mode
-opt.cmdheight = 0 -- Height of the command bar, it appears when needed
---opt.showtabline = 0                 -- Hide tabs
+-- Ventanas y Splits
+p.splitright = true -- Los nuevos splits verticales aparecen a la derecha
+p.splitbelow = true -- Los nuevos splits horizontales aparecen abajo
+p.splitkeep = "screen" -- Mantiene la posición del cursor en splits
 
--- Identation
-opt.tabstop = 4 -- A TAB character looks like 2 spaces
-opt.shiftwidth = 4 -- Number of spaces inserted when indenting
-opt.softtabstop = 4
-opt.autoindent = false
-opt.smartindent = false
-opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+-- General
+p.clipboard = "unnamedplus" -- Sincronización con el portapapeles del sistema
+p.mouse = "" -- Deshabilita el ratón
+p.updatetime = 250 -- Tiempo para que se disparen eventos como CursorHold
+-- p.timeoutlen = 400 -- Tiempo de espera para secuencias de teclas
 
--- Undo
-opt.undofile = true
-opt.undolevels = 10000
+--- Manejo de Archivos
+p.swapfile = false -- No crear archivos swap
+p.backup = false -- No crear archivos de backup
+p.undofile = true -- Habilita el historial de deshacer persistente
+p.undolevels = 10000 -- Niveles máximos de deshacer
 
--- Search
-opt.incsearch = true
-opt.smartcase = true
+-- Ortografía
+p.spelllang = { "es", "en" }
+p.spell = false -- Deshabilitada por defecto
 
---opt.scrolloff = 0                 -- Minimal number of screen lines to keep above and below the cursor. 999 to center.
---opt.sidescrolloff = 8             -- minimal number of screen lines to keep left and right of the cursor.
-opt.signcolumn = "yes" -- Line in the left of number line, space
--- opt.isfname:append('@-@')        -- Allow files names with '@'.
-opt.updatetime = 50
+-- Rendimiento y Arranque
+p.shortmess:append("sI") -- Deshabilita el mensaje de bienvenida de Neovim
+p.syntax = "off" -- Deshabilita el motor de sintaxis por regex (opcional)
 
--- Fold
-opt.foldenable = true
-opt.foldlevel = 99
-opt.foldlevelstart = 99
-opt.foldmethod = "indent" -- indent, expr
-opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-
--- Show whitespaces
-vim.opt.list = false
-vim.opt.listchars = { space = "·", trail = "⋅", tab = "→·" }
-
--- Netrw
-g.loaded_netrwPlugin = 0
-g.loaded_netrw = 0
+-- Deshabilitar proveedores integrados para acelerar el arranque
+g.loaded_node_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0

@@ -56,7 +56,6 @@ return {
         "eero-lehtinen/oklch-color-picker.nvim",
         version = "*",
         keys = {
-            -- One handed keymap recommended, you will be using the mouse
             {
                 "<leader>hi",
                 function()

@@ -2,7 +2,6 @@ return {
     "saghen/blink.cmp",
     version = "1.*",
     event = "InsertEnter",
-    -- dependencies = { "L3MON4D3/LuaSnip" },
     opts = {
         completion = {
             accept = {
@@ -21,7 +20,8 @@ return {
             ["<C-n>"] = { "select_next" },
             ["<C-d>"] = { "scroll_documentation_down", "fallback" },
             ["<C-U>"] = { "scroll_documentation_up", "fallback" },
-            -- ["<CR>"] = { "accept" }, -- confirma y hace <Enter>
+            ["<C-space>"] = { "show" },
+            ["<CR>"] = { "accept", "fallback" }, -- confirma y hace <Enter>
         },
 
         cmdline = { enabled = false },
